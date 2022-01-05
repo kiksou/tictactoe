@@ -36,77 +36,55 @@ function fillCell () {
 	this.classList.add(currentTurn);
 	
 	if (checkForWin()) {
-	
-	// WINNER!
-	
-	}
-	
-	currentTurn = currentTurn == 'x' ? 'o' : 'x';
-	
-	board_el.classList.remove('turn-o', 'turn-x'); board_el.classList.add('turn-' + currentTurn);
-	
+
+		const restart = confirm(currentTurn.toUpperCase() + " is the winner! Restart?");
+		
+		if (restart) setup();
+		
+	} else if (checkForDraw()) {
+		
+		const restart = confirm("It's a draw! Restart?");
+		
+		if (restart) setup();
+		
+		} else {
+		
+		currentTurn = currentTurn == 'x' ? 'o' : 'x'; 
+		board_el.classList.remove('turn-o', 'turn-x'); 
+		board_el.classList.add('turn-' + currentTurn);
+		
+		}
 	}
 
-if (checkForWin()) {
 
-	const restart = confirm(currentTurn.toUpperCase() + " is the winner! Restart?");
-	
-	if (restart) setup();
-	
-} else if (checkForDraw()) {
-	
-	const restart = confirm("It's a draw! Restart?");
-	
-	if (restart) setup();
-	
-	} else {
-	
-	currentTurn = currentTurn == 'x' ? 'o' : 'x'; 
-	board_el.classList.remove('turn-o', 'turn-x'); 
-	board_el.classList.add('turn-' + currentTurn);
-	
-	}
 	
 	function checkForWin () {
 	
 	return combinations.some (combination => {
 	
-	return combination.every (c => {
+		return combination.every (c => {
 	
-	if (cell_els [c].classList.contains (currentTurn)) {
-	
-	return true;
-	
-	}
-	
-	return false;
-	
+			if (cell_els [c].classList.contains (currentTurn)) {
+				return true;
+			}
+			
+			return false;
+		});
 	});
-	
-	});
-	
-	}
+}
 
 function checkForDraw () {
 
 	return [...cell_els].every(c =>{
 	
 	if (
-	
-	
-	
-	c.classList.contains ('x') ||
-	
-	c.classList.contains('o')
+		c.classList.contains ('x') ||
+		c.classList.contains('o')
 	
 	) {
-	
-	return true;
-	
+		return true;
 	}
-	
 	return false;
-	
-	});
+});
 	
 	}
