@@ -26,9 +26,8 @@ function setup () {
 		cell.classList.remove('x', '0');
 		cell.addEventListener('click', fillCell, { once: true });
 	}
-
-currentTurn = Math.round(Math.random(0, 1)) == 1 ? 'x' : '0';
-board_el.classList.add('turn-' + currentTurn);
+	currentTurn = Math.round(Math.random(0, 1)) == 1 ? 'x' : '0';
+	board_el.classList.add('turn-' + currentTurn);
 }
 
 function fillCell () {
@@ -37,13 +36,13 @@ function fillCell () {
 	
 	if (checkForWin()) {
 
-		const restart = confirm(currentTurn.toUpperCase() + " is the winner! Restart?");
+		const restart = confirm(currentTurn.toUpperCase() + " a gagne! recommencer ?");
 		
 		if (restart) setup();
 		
 	} else if (checkForDraw()) {
 		
-		const restart = confirm("It's a draw! Restart?");
+		const restart = confirm("match nul! recommencer?");
 		
 		if (restart) setup();
 		
