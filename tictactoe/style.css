@@ -58,7 +58,7 @@
 		
 		}
 
-		main {
+	main {
 
 			display: flex;
 			
@@ -70,67 +70,54 @@
 			
 			}
 			
-			.board {
+	.board {
 			
-			display: grid; 
-			grid-template-columns: repeat(3, auto);
+		display: grid; 
+		grid-template-columns: repeat(3, auto);
+			
+	}
+			
+	.cell {
+			
+		position: relative;
+			
+		border: 1px solid var(--dark);
+			
+		width: 100px;
+			
+		padding-top: 100%;
+			
+		cursor: pointer;
 			
 			}
 			
-			.cell {
-			
-			position: relative;
-			
-			border: 1px solid var(--dark);
-			
-			width: 100px;
-			
-			padding-top: 100%;
-			
-			cursor: pointer;
-			
+	.cell:nth-child(1),
+	.cell:nth-child(2),
+	.cell:nth-child(3) {
+		border-top: none;
 			}
-			
-			.cell:nth-child(1),
-			
-			.cell:nth-child(2),
-			
-			.cell:nth-child(3) {
-			
-			border-top: none;
+
+	.cell:nth-child(1),
+	.cell:nth-child(4),
+	.cell:nth-child(7) {
+		border-left: none;
+			}
+
+	.cell:nth-child(7),
+	.cell:nth-child(8),
+	.cell:nth-child(9) {
+		border-bottom: none;
 			
 			}
 
-			.cell:nth-child(1),
-			
-			.cell:nth-child(4),
-			
-			.cell:nth-child(7) {
-			
-			border-left: none;
-			
-			}
-			.cell:nth-child(7),
-			
-			.cell:nth-child(8),
-			
-			.cell:nth-child(9) {
-			
-			border-bottom: none;
-			
-			}
-
-			.cell:nth-child(3),
-			
-			.cell:nth-child(6),
-			
-			.cell:nth-child(9) {
-			
-			border-right: none;
+	.cell:nth-child(3),
+	.cell:nth-child(6),
+	.cell:nth-child(9) {
+		border-right: none;
 			
 			}
 	.cell.x::after,
-	.cell.x::before{
+	.cell.x::before {
 			display: block;
 
 			position: absolute;
@@ -149,23 +136,23 @@
 			
 			}
 			
-			.cell.x::before,
-			
-			.board.turn-x .cell:not(.x):not(.o):hover::before { transform: translate (-50%, -50% ) rotate(-45deg);
+	.cell.x::before,
+	.board.turn-x ,
+	.cell:not(.x):not(.o):hover::before { 
+			transform: translate (-50%, -50% ) rotate(-45deg);
 			
 			}
 			
 			.cell.x::after,
-			
-			.board.turn-x .cell:not(.x):not(.o):hover::after {
+			.board.turn-x ,
+			.cell:not(.x):not(.o):hover::after {
 			
 			transform: translate(-50%, -50%) rotate (45deg);
 			
 			}
 			
 			.cell.o::before,
-			
-			.board.turn-o.cell:hover {
+			.board.turn-o .cell:not(.x):not(.o) :hover::before {
 			
 			content: '';
 			
@@ -180,13 +167,14 @@
 
 transform: translate(-50%, -50%); height: 60px;
 
-border: 10px solid var(-dark);
+border: 10px solid var(--dark);
 
 border-radius: 50%;
 
 }
 
-.board.turn-x .cell:not(.x):not(.o):hover::after, .board.turn-x .cell:not(.x):not(.o):hover::before {
+.board.turn-x .cell:not(.x):not(.o):hover::after, 
+.board.turn-x .cell:not(.x):not(.o):hover::before {
 
 background-color: var(--grey);
 
